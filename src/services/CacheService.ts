@@ -11,8 +11,8 @@ export class CacheService implements CacheServiceType {
     getAllCache(): CacheType[] {
         return this.cacheDAOService.getAllCache()
     }
-    getCacheById(cacheId: String): CacheType {
-        return this.cacheDAOService.getCacheById(cacheId)
+    getCacheByKey(cacheId: String): CacheType {
+        return this.cacheDAOService.getCacheByKey(cacheId)
     }
     createOrUpdateCache(cache: CacheType): CacheType {
         return this.cacheDAOService.createOrUpdateCache(cache)
@@ -20,8 +20,8 @@ export class CacheService implements CacheServiceType {
     removeAllCache(): GenericRespose {
         return this.cacheDAOService.removeAllCache()
     }
-    removeCacheById(cacheId: String): GenericRespose {
-        return this.cacheDAOService.removeCacheById(cacheId)
+    removeCacheByKey(cacheId: String): GenericRespose {
+        return this.cacheDAOService.removeCacheByKey(cacheId)
     }
 
 }

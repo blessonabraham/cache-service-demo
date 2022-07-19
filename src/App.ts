@@ -18,12 +18,24 @@ export const App = () => {
   const cacheService: CacheServiceType = new CacheService(cacheDAOService)
   const cacheController: CacheControllerType = new CacheController(cacheService)
 
-  theExpress.get('/cache/:cacheId', (req: Request, res: Response) => {
-    res.json(cacheController.getCacheById(req.params.cacheId))
+  theExpress.get('/cache', (req: Request, res: Response) => {
+    res.json(cacheController.getAllCache())
   });
 
-  theExpress.get('/cache/:cacheId', (req: Request, res: Response) => {
-    res.json(cacheController.getCacheById(req.params.cacheId))
+  theExpress.get('/cache/:cacheKey', (req: Request, res: Response) => {
+    res.json(cacheController.getCacheByKey(req.params.cacheKey))
+  });
+
+  theExpress.post('/cache', (req: Request, res: Response) => {
+    res.json(cacheController.createOrUpdateCache(req.body))
+  });
+
+  theExpress.delete('/cache/:cacheKey', (req: Request, res: Response) => {
+    res.json(cacheController.removeCacheByKey(req.params.cacheKey))
+  });
+
+  theExpress.delete('/cache', (req: Request, res: Response) => {
+    res.json(cacheController.removeAllCache())
   });
 
   return theExpress

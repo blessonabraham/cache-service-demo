@@ -1,6 +1,6 @@
 export type CacheType = {
-    id: String,
-    key: String
+    key: String,
+    value: String
 }
 
 export type GenericRespose = {
@@ -10,25 +10,25 @@ export type GenericRespose = {
 
 export type CacheControllerType = {
     getAllCache(): CacheType[]
-    getCacheById(cacheId: String): CacheType
+    getCacheByKey(cacheKey: String): CacheType
     createOrUpdateCache(cache: CacheType): CacheType
     removeAllCache(): GenericRespose
-    removeCacheById(cacheId: String): GenericRespose
+    removeCacheByKey(cacheKey: String): GenericRespose
 }
 
 export type CacheServiceType = {
     getAllCache(): CacheType[]
-    getCacheById(cacheId: String): CacheType
+    getCacheByKey(cacheKey: String): CacheType
     createOrUpdateCache(cache: CacheType): CacheType
     removeAllCache(): GenericRespose
-    removeCacheById(cacheId: String): GenericRespose
+    removeCacheByKey(cacheKey: String): GenericRespose
 }
 
 export type CacheDAOServiceType = {
     getAllCache(): CacheType[]
-    getCacheById(cacheId: String): CacheType
+    getCacheByKey(cacheKey: String): CacheType
     createOrUpdateCache(cache: CacheType): CacheType
     removeAllCache(): GenericRespose
-    removeCacheById(cacheId: String): GenericRespose
+    removeCacheByKey(cacheKey: String): GenericRespose
 }
 

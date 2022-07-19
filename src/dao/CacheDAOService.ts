@@ -2,24 +2,40 @@ import { CacheDAOServiceType, CacheType, GenericRespose } from "../types/Types";
 
 export class CacheDAOService implements CacheDAOServiceType {
 
-    getCacheById(cacheId: String): CacheType {
-        throw new Error("Method not implemented.");
+    getCacheByKey(cacheId: String): CacheType {
+        return {
+            key: '101',
+            value: 'kjnskjdnckscn'
+        }
     }
 
     getAllCache(): CacheType[] {
-        throw new Error("Method not implemented.");
+        return [{
+            key: '101',
+            value: 'kjnskjdnckscn'
+        }, {
+            key: '101',
+            value: 'kjnskjdnckscn'
+        }]
     }
 
     createOrUpdateCache(cache: CacheType): CacheType {
-        throw new Error("Method not implemented.");
+        return {
+            key: '101',
+            value: 'created'
+        }
     }
 
     removeAllCache(): GenericRespose {
-        throw new Error("Method not implemented.");
+        return {
+            status: 'Success'
+        }
     }
-    
-    removeCacheById(cacheId: String): GenericRespose {
-        throw new Error("Method not implemented.");
+
+    removeCacheByKey(cacheId: String): GenericRespose {
+        return {
+            status: 'Success'
+        }
     }
 
 }

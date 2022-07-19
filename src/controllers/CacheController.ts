@@ -11,8 +11,8 @@ export class CacheController implements CacheControllerType {
     getAllCache(): CacheType[] {
         return this.service.getAllCache()
     }
-    getCacheById(cacheId: String): CacheType {
-        return this.service.getCacheById(cacheId)
+    getCacheByKey(cacheId: String): CacheType {
+        return this.service.getCacheByKey(cacheId)
     }
     createOrUpdateCache(cache: CacheType): CacheType {
         return this.service.createOrUpdateCache(cache)
@@ -20,8 +20,8 @@ export class CacheController implements CacheControllerType {
     removeAllCache(): GenericRespose {
         return this.service.removeAllCache()
     }
-    removeCacheById(cacheId: String): GenericRespose {
-        return this.service.removeCacheById(cacheId)
+    removeCacheByKey(cacheId: String): GenericRespose {
+        return this.service.removeCacheByKey(cacheId)
     }
 
 }
