@@ -1,17 +1,34 @@
-export type GetCacheResponseType = {
+export type CacheType = {
     id: String,
     key: String
 }
 
+export type GenericRespose = {
+    status: 'Success' | 'Failure',
+    message?: string
+}
+
 export type CacheControllerType = {
-    getCacheById(): GetCacheResponseType
+    getAllCache(): CacheType[]
+    getCacheById(cacheId: String): CacheType
+    createOrUpdateCache(cache: CacheType): CacheType
+    removeAllCache(): GenericRespose
+    removeCacheById(cacheId: String): GenericRespose
 }
 
 export type CacheServiceType = {
-    getCacheById(): GetCacheResponseType
+    getAllCache(): CacheType[]
+    getCacheById(cacheId: String): CacheType
+    createOrUpdateCache(cache: CacheType): CacheType
+    removeAllCache(): GenericRespose
+    removeCacheById(cacheId: String): GenericRespose
 }
 
 export type CacheDAOServiceType = {
-    getCacheById(): GetCacheResponseType
+    getAllCache(): CacheType[]
+    getCacheById(cacheId: String): CacheType
+    createOrUpdateCache(cache: CacheType): CacheType
+    removeAllCache(): GenericRespose
+    removeCacheById(cacheId: String): GenericRespose
 }
 
