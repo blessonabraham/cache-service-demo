@@ -8,9 +8,10 @@ import { CacheService } from './services/CacheService';
 import { CacheControllerType, CacheDAOServiceType, CacheServiceType } from './types/Types';
 
 // TO-DO
-// * Exception Handling with proper code
-// * Return with proper Code
-// * Poper Logging Service
+// Exception Handling with proper code
+// Return with proper Code
+// Poper Logging Service
+// Validation in Post request 
 
 export const App = () => {
   const theExpress = express();
