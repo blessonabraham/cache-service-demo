@@ -14,23 +14,23 @@ export type CacheControllerType = {
     getAllCache(): Promise<CacheType[]>
     getCacheByKey(cacheKey: string): Promise<CacheType>
     createOrUpdateCache(cache: CacheType): Promise<CacheType>
-    removeAllCache(): GenericRespose
-    removeCacheByKey(cacheKey: string): GenericRespose
+    removeAllCache(): Promise<GenericRespose>
+    removeCacheByKey(cacheKey: string): Promise<GenericRespose>
 }
 
 export type CacheServiceType = {
     getAllCache(): Promise<CacheType[]>
     getCacheByKey(cacheKey: string): Promise<CacheType>
     createOrUpdateCache(cache: CacheType): Promise<CacheType>
-    removeAllCache(): GenericRespose
-    removeCacheByKey(cacheKey: string): GenericRespose
+    removeAllCache(): Promise<GenericRespose>
+    removeCacheByKey(cacheKey: string): Promise<GenericRespose>
 }
 
 export type CacheDAOServiceType = {
     getAllCache(): Promise<CacheType[]>
     getCacheByKey(cacheKey: string): Promise<CacheType>
     createOrUpdateCache(cache: CacheType): Promise<CacheType> 
-    removeAllCache(): GenericRespose
-    removeCacheByKey(cacheKey: string): GenericRespose
+    removeAllCache(): Promise<GenericRespose>
+    removeCacheByKey(cacheKey: string): Promise<GenericRespose>
 }
 

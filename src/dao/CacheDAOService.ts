@@ -16,30 +16,12 @@ export class CacheDAOService implements CacheDAOServiceType {
     async getCacheByKey(cacheKey: string): Promise<CacheType> {
 
         const result = await this.collection.findOne({ key: cacheKey })
-        let cache: CacheType = null;
-
-        if (!result?.key) {
-            console.log("Cache miss")
-            const random = Math.random().toString(36).slice(2, 7);
-            cache = {
-                key: cacheKey,
-                value: random,
-                ttl: DEFAULT_TTL_HOURS,
-                lastUsed: getTimeStamp()
-            }
-            this.createOrUpdateCache(cache)
-        } else {
-            console.log("Cache hit")
-            cache = {
-                key: result?.key,
-                value: result?.value,
-                ttl: result?.ttl,
-                lastUsed: result?.lastUsed
-            }
-
+        return {
+            key: result?.key,
+            value: result?.value,
+            ttl: result?.ttl,
+            lastUsed: result?.lastUsed
         }
-
-        return cache
     }
 
     async getAllCache(): Promise<CacheType[]> {
@@ -57,14 +39,14 @@ export class CacheDAOService implements CacheDAOServiceType {
         return cache
     }
 
-    removeAllCache(): GenericRespose {
-        return null
-
+    async removeAllCache(): Promise<GenericRespose> {
+        const result = await this.collection.deleteMany({})
+        return { status: "Success" }
     }
 
-    removeCacheByKey(cacheId: string): GenericRespose {
-        return null
-
+    async removeCacheByKey(cacheKey: string): Promise<GenericRespose> {
+        const result = await this.collection.deleteOne({ key: cacheKey })
+        return { status: "Success" }
     }
 
 }

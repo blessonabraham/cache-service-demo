@@ -11,7 +11,6 @@ import { CacheControllerType, CacheDAOServiceType, CacheServiceType } from './ty
 // * Exception Handling with proper code
 // * Return with proper Code
 // * Poper Logging Service
-// * MongoDB Connection
 
 export const App = () => {
   const theExpress = express();

@@ -17,10 +17,10 @@ export class CacheController implements CacheControllerType {
     createOrUpdateCache(cache: CacheType): Promise<CacheType>  {
         return this.service.createOrUpdateCache(cache)
     }
-    removeAllCache(): GenericRespose {
+    removeAllCache(): Promise<GenericRespose> {
         return this.service.removeAllCache()
     }
-    removeCacheByKey(cacheId: string): GenericRespose {
+    removeCacheByKey(cacheId: string): Promise<GenericRespose> {
         return this.service.removeCacheByKey(cacheId)
     }
 
