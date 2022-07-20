@@ -6,6 +6,7 @@ dotenv.config()
 const port = process.env.SERVER_PORT
 
 const app = App()
+
 app.listen(port, () => {
   console.log(`Server is running at ${port}`);
 });

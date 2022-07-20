@@ -2,7 +2,7 @@ export type CacheType = {
     key: string,
     value: string,
     ttl: number,
-    lastUsed: string
+    lastUsed: number
 }
 
 export type GenericRespose = {

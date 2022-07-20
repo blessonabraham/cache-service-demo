@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { MongoClient } from 'mongodb';
 import { mongoDBInstance } from './configs/Configs';
 import { CacheController } from './controllers/CacheController';
@@ -11,7 +11,7 @@ import { CacheControllerType, CacheDAOServiceType, CacheServiceType } from './ty
 // Exception Handling with proper code
 // Return with proper Code
 // Poper Logging Service
-// Validation in Post request 
+// Testing
 
 export const App = () => {
   const theExpress = express();
@@ -33,8 +33,12 @@ export const App = () => {
     res.json(await cacheController.getCacheByKey(req.params.cacheKey))
   });
 
-  theExpress.post('/cache', async (req: Request, res: Response) => {
-    res.json(await cacheController.createOrUpdateCache(req.body))
+  theExpress.post('/cache', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.json(await cacheController.createOrUpdateCache(req.body))
+    } catch (e) {
+      next(e)
+    }
   });
 
   theExpress.delete('/cache/:cacheKey', async (req: Request, res: Response) => {
