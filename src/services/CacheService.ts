@@ -8,19 +8,23 @@ export class CacheService implements CacheServiceType {
         this.cacheDAOService = daoService
     }
     
-    getAllCache(): CacheType[] {
+    getAllCache(): Promise<CacheType[]> {
         return this.cacheDAOService.getAllCache()
     }
-    getCacheByKey(cacheId: String): CacheType {
+
+    getCacheByKey(cacheId: string): Promise<CacheType> {
         return this.cacheDAOService.getCacheByKey(cacheId)
     }
-    createOrUpdateCache(cache: CacheType): CacheType {
+
+    createOrUpdateCache(cache: CacheType): Promise<CacheType> {
         return this.cacheDAOService.createOrUpdateCache(cache)
     }
+
     removeAllCache(): GenericRespose {
         return this.cacheDAOService.removeAllCache()
     }
-    removeCacheByKey(cacheId: String): GenericRespose {
+    
+    removeCacheByKey(cacheId: string): GenericRespose {
         return this.cacheDAOService.removeCacheByKey(cacheId)
     }
 

@@ -1,6 +1,8 @@
 export type CacheType = {
-    key: String,
-    value: String
+    key: string,
+    value: string,
+    ttl: number,
+    lastUsed: string
 }
 
 export type GenericRespose = {
@@ -9,26 +11,26 @@ export type GenericRespose = {
 }
 
 export type CacheControllerType = {
-    getAllCache(): CacheType[]
-    getCacheByKey(cacheKey: String): CacheType
-    createOrUpdateCache(cache: CacheType): CacheType
+    getAllCache(): Promise<CacheType[]>
+    getCacheByKey(cacheKey: string): Promise<CacheType>
+    createOrUpdateCache(cache: CacheType): Promise<CacheType>
     removeAllCache(): GenericRespose
-    removeCacheByKey(cacheKey: String): GenericRespose
+    removeCacheByKey(cacheKey: string): GenericRespose
 }
 
 export type CacheServiceType = {
-    getAllCache(): CacheType[]
-    getCacheByKey(cacheKey: String): CacheType
-    createOrUpdateCache(cache: CacheType): CacheType
+    getAllCache(): Promise<CacheType[]>
+    getCacheByKey(cacheKey: string): Promise<CacheType>
+    createOrUpdateCache(cache: CacheType): Promise<CacheType>
     removeAllCache(): GenericRespose
-    removeCacheByKey(cacheKey: String): GenericRespose
+    removeCacheByKey(cacheKey: string): GenericRespose
 }
 
 export type CacheDAOServiceType = {
-    getAllCache(): CacheType[]
-    getCacheByKey(cacheKey: String): CacheType
-    createOrUpdateCache(cache: CacheType): CacheType
+    getAllCache(): Promise<CacheType[]>
+    getCacheByKey(cacheKey: string): Promise<CacheType>
+    createOrUpdateCache(cache: CacheType): Promise<CacheType> 
     removeAllCache(): GenericRespose
-    removeCacheByKey(cacheKey: String): GenericRespose
+    removeCacheByKey(cacheKey: string): GenericRespose
 }
 
