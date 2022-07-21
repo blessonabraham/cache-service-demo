@@ -5,12 +5,10 @@ import { mongoDBInstance } from './configs/Configs';
 import { CacheController } from './controllers/CacheController';
 import { CacheDAOService } from './dao/CacheDAOService';
 import { CacheService } from './services/CacheService';
-import { CacheControllerType, CacheDAOServiceType, CacheServiceType } from './types/Types';
+import { LoggerService } from './services/LoggerService';
+import { CacheControllerType, CacheDAOServiceType, CacheServiceType, LoggerServiceType } from './types/Types';
 
 // TO-DO
-// Exception Handling with proper code
-// Return with proper Code
-// Poper Logging Service
 // Testing
 
 export const App = () => {
@@ -20,9 +18,11 @@ export const App = () => {
   theExpress.use(bodyParser.json())
 
   const databaseInstance = mongoDBInstance()
+  // Patterns can be applied here
   // Should replace with TypeDI
+  const loggerService: LoggerServiceType = new LoggerService()
   const cacheDAOService: CacheDAOServiceType = new CacheDAOService(databaseInstance);
-  const cacheService: CacheServiceType = new CacheService(cacheDAOService)
+  const cacheService: CacheServiceType = new CacheService(cacheDAOService, loggerService)
   const cacheController: CacheControllerType = new CacheController(cacheService)
 
   theExpress.get('/cache', async (req: Request, res: Response, next: NextFunction) => {

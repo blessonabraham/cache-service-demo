@@ -36,3 +36,7 @@ export type CacheDAOServiceType = {
     removeCacheByKey(cacheKey: string): Promise<GenericRespose>
 }
 
+export type LoggerServiceType = {
+    logData(data: string): void
+}
+

@@ -1,13 +1,15 @@
-import { CacheDAOServiceType, CacheServiceType, CacheType, GenericRespose } from "../types/Types"
+import { CacheDAOServiceType, CacheServiceType, CacheType, GenericRespose, LoggerServiceType } from "../types/Types"
 import { CACHE_LIMIT, DEFAULT_TTL_HOURS } from "../utils/Constants"
 import { differenceInHours, getRandomString, getTimeStamp } from "../utils/Utils"
 
 export class CacheService implements CacheServiceType {
 
     cacheDAOService: CacheDAOServiceType
+    loggerService: LoggerServiceType
 
-    constructor(daoService: CacheDAOServiceType) {
+    constructor(daoService: CacheDAOServiceType, loggerService: LoggerServiceType) {
         this.cacheDAOService = daoService
+        this.loggerService = loggerService
     }
     
     getAllCache(): Promise<CacheType[]> {
@@ -19,7 +21,7 @@ export class CacheService implements CacheServiceType {
 
         let cache: CacheType = null;
         if (!result?.key) {
-            console.log("Cache miss")
+            this.loggerService.logData('Cache miss')
             cache = {
                 key: cacheKey,
                 value: getRandomString(),
@@ -28,7 +30,7 @@ export class CacheService implements CacheServiceType {
             }
             await this.createOrUpdateCache(cache)
         } else {
-            console.log("Cache hit")
+            this.loggerService.logData('Cache hit')
             cache = {
                 key: result?.key,
                 value: result?.value,
