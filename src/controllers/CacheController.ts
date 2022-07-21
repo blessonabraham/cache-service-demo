@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { CacheControllerType, CacheServiceType, CacheType, GenericRespose } from "../types/Types";
+import { CacheControllerType, CacheServiceType } from "../types/Types";
 
 export class CacheController implements CacheControllerType {
 

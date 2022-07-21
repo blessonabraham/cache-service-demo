@@ -1,6 +1,5 @@
 import bodyParser from 'body-parser';
 import express, { NextFunction, Request, Response } from 'express';
-import { MongoClient } from 'mongodb';
 import { mongoDBInstance } from './configs/Configs';
 import { CacheController } from './controllers/CacheController';
 import { CacheDAOService } from './dao/CacheDAOService';

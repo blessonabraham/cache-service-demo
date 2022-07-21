@@ -1,7 +1,5 @@
-import { Collection, ObjectId } from "mongodb";
+import { Collection } from "mongodb";
 import { CacheDAOServiceType, CacheType, GenericRespose } from "../types/Types";
-import { DEFAULT_TTL_HOURS } from "../utils/Constants";
-import { getTimeStamp } from "../utils/Utils";
 
 export class CacheDAOService implements CacheDAOServiceType {
 
@@ -40,12 +38,12 @@ export class CacheDAOService implements CacheDAOServiceType {
     }
 
     async removeAllCache(): Promise<GenericRespose> {
-        const result = await this.collection.deleteMany({})
+        await this.collection.deleteMany({})
         return { status: "Success" }
     }
 
     async removeCacheByKey(cacheKey: string): Promise<GenericRespose> {
-        const result = await this.collection.deleteOne({ key: cacheKey })
+        await this.collection.deleteOne({ key: cacheKey })
         return { status: "Success" }
     }
 
