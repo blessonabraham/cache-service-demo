@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && node dist",
     "start-dev": "tsc --watch & nodemon dist --watch",
-    "test": "jest --watch",
+    "test": "jest --expand --watchAll",
     "test-coverage": "jest --coverage"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "mongodb": "^4.8.0"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^4.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.0.5",

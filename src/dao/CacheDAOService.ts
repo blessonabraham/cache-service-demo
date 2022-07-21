@@ -26,7 +26,7 @@ export class CacheDAOService implements CacheDAOServiceType {
 
     async getAllCache(): Promise<CacheType[]> {
         const result = await this.collection.find()
-        return (await result.toArray()).map(data => ({
+        return (await result?.toArray())?.map(data => ({
             key: data?.key,
             value: data?.value,
             ttl: data?.ttl,
