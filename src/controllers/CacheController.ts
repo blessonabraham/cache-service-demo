@@ -1,27 +1,52 @@
-import { CacheControllerType, CacheType, GenericRespose } from "../types/Types";
+import { NextFunction, Request, Response } from "express";
+import { CacheControllerType, CacheServiceType, CacheType, GenericRespose } from "../types/Types";
 
 export class CacheController implements CacheControllerType {
 
-    service: CacheControllerType;
+    service: CacheServiceType;
 
-    constructor(service: CacheControllerType) {
+    constructor(service: CacheServiceType) {
         this.service = service
     }
-    
-    getAllCache(): Promise<CacheType[]> {
-        return this.service.getAllCache()
+
+    async getAllCache(_req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            res.status(200).json(res.json(await this.service.getAllCache()))
+        } catch (e) {
+            next(e)
+        }
     }
-    getCacheByKey(cacheId: string): Promise<CacheType> {
-        return this.service.getCacheByKey(cacheId)
+
+    async getCacheByKey(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            res.status(200).json(res.json(await this.service.getCacheByKey(req.params.cacheKey)))
+        } catch (e) {
+            next(e)
+        }
     }
-    createOrUpdateCache(cache: CacheType): Promise<CacheType>  {
-        return this.service.createOrUpdateCache(cache)
+
+    async createOrUpdateCache(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            res.status(201).json(await this.service.createOrUpdateCache(req.body))
+        } catch (e) {
+            next(e)
+        }
     }
-    removeAllCache(): Promise<GenericRespose> {
-        return this.service.removeAllCache()
+
+    async removeAllCache(_req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            res.status(200).json(await this.service.removeAllCache())
+        } catch (e) {
+            next(e)
+        }
     }
-    removeCacheByKey(cacheId: string): Promise<GenericRespose> {
-        return this.service.removeCacheByKey(cacheId)
+
+    async removeCacheByKey(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            res.status(200).json(await this.service.removeCacheByKey(req.params.cacheKey))
+        } catch (e) {
+            next(e)
+        }
     }
 
 }

@@ -52,7 +52,7 @@ export class CacheService implements CacheServiceType {
 
     async createOrUpdateCache(cache: CacheType): Promise<CacheType> {
 
-        if (!cache?.key && !cache.value){
+        if (!cache?.key || !cache?.value){
             throw new Error("Key & Value is required")
         }
 

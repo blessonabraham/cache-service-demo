@@ -25,28 +25,24 @@ export const App = () => {
   const cacheService: CacheServiceType = new CacheService(cacheDAOService)
   const cacheController: CacheControllerType = new CacheController(cacheService)
 
-  theExpress.get('/cache', async (_req: Request, res: Response) => {
-    res.json(await cacheController.getAllCache())
+  theExpress.get('/cache', async (req: Request, res: Response, next: NextFunction) => {
+    await cacheController.getAllCache(req, res, next)
   });
 
-  theExpress.get('/cache/:cacheKey', async (req: Request, res: Response) => {
-    res.json(await cacheController.getCacheByKey(req.params.cacheKey))
+  theExpress.get('/cache/:cacheKey', async (req: Request, res: Response, next: NextFunction) => {
+    await cacheController.getCacheByKey(req, res, next)
   });
 
   theExpress.post('/cache', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      res.json(await cacheController.createOrUpdateCache(req.body))
-    } catch (e) {
-      next(e)
-    }
+    await cacheController.createOrUpdateCache(req, res, next)
   });
 
-  theExpress.delete('/cache/:cacheKey', async (req: Request, res: Response) => {
-    res.json(await cacheController.removeCacheByKey(req.params.cacheKey))
+  theExpress.delete('/cache/:cacheKey', async (req: Request, res: Response, next: NextFunction) => {
+    await cacheController.removeCacheByKey(req, res, next)
   });
 
-  theExpress.delete('/cache', async (_req: Request, res: Response) => {
-    res.json(await cacheController.removeAllCache())
+  theExpress.delete('/cache', async (req: Request, res: Response, next: NextFunction) => {
+    await cacheController.removeAllCache(req, res, next)
   });
 
   return theExpress

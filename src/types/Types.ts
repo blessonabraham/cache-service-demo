@@ -1,3 +1,5 @@
+import { Request, Response ,NextFunction } from "express"
+
 export type CacheType = {
     key: string,
     value: string,
@@ -11,11 +13,11 @@ export type GenericRespose = {
 }
 
 export type CacheControllerType = {
-    getAllCache(): Promise<CacheType[]>
-    getCacheByKey(cacheKey: string): Promise<CacheType>
-    createOrUpdateCache(cache: CacheType): Promise<CacheType>
-    removeAllCache(): Promise<GenericRespose>
-    removeCacheByKey(cacheKey: string): Promise<GenericRespose>
+    getAllCache(req: Request, res: Response, next: NextFunction): Promise<void>
+    getCacheByKey(req: Request, res: Response, next: NextFunction): Promise<void>
+    createOrUpdateCache(req: Request, res: Response, next: NextFunction): Promise<void>
+    removeAllCache(req: Request, res: Response, next: NextFunction): Promise<void>
+    removeCacheByKey(req: Request, res: Response, next: NextFunction): Promise<void>
 }
 
 export type CacheServiceType = {
