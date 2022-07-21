@@ -7,9 +7,6 @@ import { CacheService } from './services/CacheService';
 import { LoggerService } from './services/LoggerService';
 import { CacheControllerType, CacheDAOServiceType, CacheServiceType, LoggerServiceType } from './types/Types';
 
-// TO-DO
-// Testing
-
 export const App = () => {
   const theExpress = express();
 
